@@ -123,11 +123,26 @@ interface ApiErrorData {
   data?: { errors?: Array<{ path?: string; message?: string }> };
 }
 
+function parseResponseData(raw: unknown): ApiErrorData | undefined {
+  if (typeof raw === "string") {
+    try {
+      return JSON.parse(raw) as ApiErrorData;
+    } catch {
+      return undefined;
+    }
+  }
+  if (typeof raw === "object" && raw !== null) {
+    return raw as ApiErrorData;
+  }
+  return undefined;
+}
+
 export function handleApiError(error: unknown): string {
   if (axios.isAxiosError(error)) {
-    const axiosErr = error as AxiosError<ApiErrorData>;
+    const axiosErr = error as AxiosError;
     if (axiosErr.response) {
-      const { status, data } = axiosErr.response;
+      const { status } = axiosErr.response;
+      const data = parseResponseData(axiosErr.response.data);
 
       if (status === 400 && data?.data?.errors) {
         const lines = data.data.errors.map(
