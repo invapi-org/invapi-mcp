@@ -1,34 +1,31 @@
-# invapi-mcp-server
+# @invapi/mcp-server
 
 MCP server for the [Invapi](https://invapi.org) E-Invoicing API — convert, validate, and extract invoices in UBL, CII, ZUGFeRD, Excel, and more.
 
-## Setup
+## Quick Start
 
 ```bash
-npm install
-npm run build
+npm install -g @invapi/mcp-server
 ```
 
-Set your API key:
+Set your API key (get one at [invapi.org](https://invapi.org)):
 
 ```bash
 export INVAPI_API_KEY=your-api-key
 ```
 
-Get a key at [invapi.org](https://invapi.org).
-
 ## Usage
 
-### Claude Desktop / Claude Code
+### Claude Desktop
 
-Add to your MCP config (`claude_desktop_config.json` or `.claude.json`):
+Add to `claude_desktop_config.json`:
 
 ```json
 {
   "mcpServers": {
     "invapi": {
-      "command": "node",
-      "args": ["/absolute/path/to/invapi-mcp-server/dist/index.js"],
+      "command": "npx",
+      "args": ["-y", "@invapi/mcp-server"],
       "env": {
         "INVAPI_API_KEY": "your-api-key"
       }
@@ -37,11 +34,13 @@ Add to your MCP config (`claude_desktop_config.json` or `.claude.json`):
 }
 ```
 
-### Development
+### Claude Code
 
 ```bash
-npm run dev
+claude mcp add invapi -- npx -y @invapi/mcp-server
 ```
+
+Then set the environment variable `INVAPI_API_KEY` in your shell.
 
 ## Tools
 
@@ -84,19 +83,13 @@ npm run dev
 |------|-------------|
 | `invapi_batch_convert` | Run up to 100 conversion operations in a single request |
 
-## Project Structure
+## Development
 
-```
-src/
-├── index.ts              # Entry point, server setup (stdio transport)
-├── api-client.ts         # HTTP client, file helpers, error handling
-├── schemas.ts            # Zod schemas for Invoice and sub-types
-└── tools/
-    ├── conversion.ts     # 7 conversion tools
-    ├── validation.ts     # 3 validation tools
-    ├── extraction.ts     # 2 extraction tools
-    ├── user.ts           # User info / credits
-    └── batch.ts          # Batch conversion
+```bash
+git clone https://github.com/invapi/invapi-mcp.git
+cd invapi-mcp
+npm install
+npm run dev
 ```
 
 ## License
