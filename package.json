@@ -1,18 +1,44 @@
 {
-  "name": "invapi-mcp-server",
+  "name": "@invapi/mcp-server",
   "version": "1.0.0",
   "description": "MCP server for the Invapi E-Invoicing API - conversion, validation, and extraction",
   "type": "module",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "bin": {
-    "invapi-mcp-server": "dist/index.js"
+    "invapi-mcp-server": "dist/index.js",
+    "@invapi/mcp-server": "dist/index.js"
   },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "start": "node dist/index.js",
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build"
   },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "invapi",
+    "e-invoicing",
+    "invoice",
+    "ubl",
+    "cii",
+    "xrechnung",
+    "zugferd",
+    "factur-x",
+    "en16931"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/invapi/invapi-mcp.git"
+  },
+  "homepage": "https://invapi.org",
   "engines": {
     "node": ">=18"
   },

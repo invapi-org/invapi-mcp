@@ -20,7 +20,7 @@ import { registerUserTools } from "./tools/user.js";
 import { registerBatchTools } from "./tools/batch.js";
 
 const server = new McpServer({
-  name: "invapi-mcp-server",
+  name: "@invapi/mcp-server",
   version: "1.0.0",
 });
 
