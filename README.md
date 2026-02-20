@@ -37,10 +37,8 @@ Add to `claude_desktop_config.json`:
 ### Claude Code
 
 ```bash
-claude mcp add invapi -- npx -y @invapi/mcp-server
+claude mcp add -e INVAPI_API_KEY=xxx invapi -- npx @invapi/mcp-server
 ```
-
-Then set the environment variable `INVAPI_API_KEY` in your shell.
 
 ## Tools
 
