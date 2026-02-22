@@ -1,10 +1,11 @@
 {
   "name": "@invapi/mcp-server",
-  "version": "1.0.4",
-  "description": "MCP server for the Invapi E-Invoicing API - conversion, validation, and extraction",
+  "version": "1.0.5",
+  "description": "Invoice MCP server — extract structured data from PDF & image invoices, create e-invoices (UBL, CII, ZUGFeRD/Factur-X), convert between formats including Excel, and validate against EN 16931.",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "mcpName": "io.github.invapi-org/invapi-mcp",
   "bin": {
     "mcp-server": "dist/index.js"
   },
@@ -21,21 +22,36 @@
   },
   "keywords": [
     "mcp",
+    "mcp-server",
     "model-context-protocol",
     "invapi",
-    "e-invoicing",
     "invoice",
+    "invoicing",
+    "e-invoicing",
+    "e-invoice",
     "ubl",
     "cii",
     "xrechnung",
     "zugferd",
     "factur-x",
-    "en16931"
+    "en16931",
+    "peppol",
+    "xml",
+    "pdf",
+    "xlsx",
+    "ocr",
+    "validation",
+    "conversion",
+    "extraction",
+    "automation",
+    "digitization",
+    "digitalisierung",
+    "rechnungen"
   ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/invapi/invapi-mcp.git"
+    "url": "https://github.com/invapi-org/invapi-mcp.git"
   },
   "homepage": "https://invapi.org",
   "engines": {
